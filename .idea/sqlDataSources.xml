@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DdlMappings">
+    <mapping uuid="519e3144-b4f8-499c-9ce3-6b55f0e8349b" name="DDL Mapping">
+      <data-sources db="ba0ae767-5aff-4aaa-b89b-f36364735086" ddl="8ba67779-b391-4973-b2a1-a3eb01660c87" />
+      <scope>
+        <node negative="1">
+          <node kind="database" qname="@">
+            <node kind="schema" qname="@" />
+          </node>
+          <node kind="schema" qname="my_schema" />
+        </node>
+      </scope>
+    </mapping>
+  </component>
+  <component name="SqlDataSourceStorage">
+    <option name="dataSources">
+      <list>
+        <State>
+          <option name="id" value="8ba67779-b391-4973-b2a1-a3eb01660c87" />
+          <option name="name" value="@localhost (DDL)" />
+          <option name="languageId" value="MySQL" />
+          <option name="urls">
+            <array>
+              <option value="file://$PROJECT_DIR$/2.2.1. spring_hibernate" />
+            </array>
+          </option>
+        </State>
+      </list>
+    </option>
+  </component>
+</project>
