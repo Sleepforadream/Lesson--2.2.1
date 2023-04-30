@@ -1,8 +1,6 @@
 package hiber.model;
 
-import hiber.dao.CarDao;
 import jakarta.persistence.*;
-import org.springframework.stereotype.Component;
 
 @Entity
 @Table(name = "users")
@@ -11,7 +9,7 @@ public class User {
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    private Long id;
 
-   @OneToOne(cascade = CascadeType.ALL)
+   @OneToOne
    @JoinColumn(name = "car_id")
    private Car car;
 
@@ -43,6 +41,12 @@ public class User {
               ", email='" + email;
    }
 
+   public Car getCar() {
+      return car;
+   }
+   public void setCar(Car car) {
+      this.car = car;
+   }
    public Long getId() {
       return id;
    }

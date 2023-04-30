@@ -10,7 +10,7 @@ public class Car {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(mappedBy = "car",cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "car")
     private User user;
 
     @Column(name = "model")
