@@ -11,7 +11,7 @@ public class User {
 
    @OneToOne
    @JoinColumn(name = "car_id")
-   private Car car;
+   private Car userCar;
 
    @Column(name = "name")
    private String firstName;
@@ -24,28 +24,27 @@ public class User {
 
    public User() {}
    
-   public User(String firstName, String lastName, String email, Car car) {
+   public User(String firstName, String lastName, String email) {
       this.firstName = firstName;
       this.lastName = lastName;
       this.email = email;
-      this.car = car;
    }
 
    @Override
    public String toString() {
       return "User with " +
               "id=" + id +
-              ", car=" + car +
+              ", car=" + userCar +
               ", firstName='" + firstName + '\'' +
               ", lastName='" + lastName + '\'' +
               ", email='" + email;
    }
 
    public Car getCar() {
-      return car;
+      return userCar;
    }
    public void setCar(Car car) {
-      this.car = car;
+      this.userCar = car;
    }
    public Long getId() {
       return id;
