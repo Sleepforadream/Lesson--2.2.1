@@ -1,6 +1,6 @@
 # Maven
-../.idea
-target/
+.idea
+2.2.1. spring_hibernate/target/
 pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.versionsBackup
