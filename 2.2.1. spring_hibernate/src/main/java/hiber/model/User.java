@@ -2,6 +2,8 @@ package hiber.model;
 
 import jakarta.persistence.*;
 
+import java.util.Objects;
+
 @Entity
 @Table(name = "users")
 public class User {
@@ -9,12 +11,25 @@ public class User {
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    private Long id;
 
-   @OneToOne
+   @OneToOne(cascade = CascadeType.ALL)
    @JoinColumn(name = "car_id")
-   private Car userCar;
+   private Car car;
 
    @Column(name = "name")
    private String firstName;
+
+   @Override
+   public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      User user = (User) o;
+      return Objects.equals(id, user.id) && Objects.equals(car, user.car) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(email, user.email);
+   }
+
+   @Override
+   public int hashCode() {
+      return Objects.hash(id, car, firstName, lastName, email);
+   }
 
    @Column(name = "last_name")
    private String lastName;
@@ -34,17 +49,17 @@ public class User {
    public String toString() {
       return "User with " +
               "id=" + id +
-              ", car=" + userCar +
+              ", car=" + car +
               ", firstName='" + firstName + '\'' +
               ", lastName='" + lastName + '\'' +
               ", email='" + email;
    }
 
    public Car getCar() {
-      return userCar;
+      return car;
    }
    public void setCar(Car car) {
-      this.userCar = car;
+      this.car = car;
    }
    public Long getId() {
       return id;

@@ -13,13 +13,14 @@ import java.util.List;
 @Repository
 public class UserDaoImp implements UserDao {
 
-    @Autowired
     private SessionFactory sessionFactory;
+    @Autowired
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
-    @Override
     public void add(User user) {
         sessionFactory.getCurrentSession().persist(user);
-        sessionFactory.getCurrentSession().persist(user.getCar());
     }
 
     @Override
@@ -30,14 +31,10 @@ public class UserDaoImp implements UserDao {
 
     @Override
     public User getUserByCar(String model, Long series) {
-        TypedQuery<Car> queryGetCar = sessionFactory.getCurrentSession().
-                createQuery("from Car where model=:model and series = :series", Car.class);
+        TypedQuery<User> queryGetCar = sessionFactory.getCurrentSession().
+                createQuery("from User where car.model=:model and car.series = :series", User.class);
         queryGetCar.setParameter("model", model);
         queryGetCar.setParameter("series", series);
-        Car car = queryGetCar.getSingleResult();
-        TypedQuery<User> getUserQuery = sessionFactory.getCurrentSession().
-                createQuery("from User where userCar.id=:carId", User.class);
-        getUserQuery.setParameter("carId", car.getId());
-        return getUserQuery.getSingleResult();
+        return queryGetCar.getSingleResult();
     }
 }
